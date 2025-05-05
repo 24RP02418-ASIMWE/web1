@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect Hub - Events</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+              <img src="photo.png" alt="EduConnect Hub" height="40"> EduConnect Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schools.html">School Directory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admissions.html">Admissions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Events Dashboard Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Event Submission Card -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-plus-circle me-2"></i> Submit New Event
+                        </div>
+                        <div class="card-body">
+                            <form id="eventForm" novalidate>
+                                <div class="mb-3">
+                                    <label for="eventTitle" class="form-label">Event Title</label>
+                                    <input type="text" class="form-control" id="eventTitle" required>
+                                    <div class="invalid-feedback">Please provide an event title.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventDate" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="eventDate" required>
+                                    <div class="invalid-feedback">Please select a date.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventSchool" class="form-label">School (if applicable)</label>
+                                    <select class="form-select" id="eventSchool" required>
+                                        <option value="">Select school</option>
+                                        <option value="all">All Schools</option>
+
+                        <option value="">All Levels</option>
+                        <option value="Primary">Primary</option>
+                        <option value="Secondary">Secondary</option>
+                        <option value="Combined">Combined</option>
+                                        <!-- Schools will be populated by JavaScript -->
+                                    </select>
+                                    <div class="invalid-feedback">Please select a school.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="eventDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" id="eventDescription" rows="3" required></textarea>
+                                    <div class="invalid-feedback">Please provide a description.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Submit Event</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Links Card -->
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-link me-2"></i> Quick Links
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="schools.html" class="text-decoration-none">
+                                        <i class="fas fa-school me-2 text-primary"></i> School Directory
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="admissions.html" class="text-decoration-none">
+                                        <i class="fas fa-file-alt me-2 text-primary"></i> Admissions
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="contact.html" class="text-decoration-none">
+                                        <i class="fas fa-envelope me-2 text-primary"></i> Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-8">
+                    <!-- Events Calendar Card -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-calendar-alt me-2"></i> Upcoming Events
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="eventsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Event</th>
+                                            <th>School</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Events will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- School Events Filter -->
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-filter me-2"></i> Filter Events
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="filterSchool" class="form-label">Filter by School</label>
+                                    <select class="form-select" id="filterSchool">
+                                        <option value="all">All Schools</option>
+                                        <!-- Schools will be populated by JavaScript -->
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="filterMonth" class="form-label">Filter by Month</label>
+                                    <select class="form-select" id="filterMonth">
+                                        <option value="all">All Months</option>
+                                        <option value="0">January</option>
+                                        <option value="1">February</option>
+                                        <option value="2">March</option>
+                                        <option value="3">April</option>
+                                        <option value="4">May</option>
+                                        <option value="5">June</option>
+                                        <option value="6">July</option>
+                                        <option value="7">August</option>
+                                        <option value="8">September</option>
+                                        <option value="9">October</option>
+                                        <option value="10">November</option>
+                                        <option value="11">December</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="applyFilter" class="btn btn-primary w-100">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container text-center">
+            <p>&copy; 2023 EduConnect Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/events.js"></script>
+</body>
+</html>
